@@ -1,0 +1,22 @@
+
+version: "3"
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: bootcamp-challenge
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432"
+  api:
+    build: .
+    environment:
+      DB_NAME: bootcamp-challenge
+      DB_USER: postgres
+      DB_PASS: admin
+      DB_HOST: db
+      PORT: 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/challenge-api/src
