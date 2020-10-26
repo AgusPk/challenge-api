@@ -1,8 +1,10 @@
 FROM node
-WORKDIR /challenge-api
-COPY package*.json ./
+
+# Create app directory
+WORKDIR /usr/src/app
+
+COPY ./ /usr/src/app
 
 RUN npm install
-CMD ["npm", "run", "dev"]
 
-EXPOSE 3000
+CMD [ "npm", "run", "dev" ]

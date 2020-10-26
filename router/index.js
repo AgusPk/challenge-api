@@ -11,4 +11,5 @@ module.exports = (app) => {
   app.get("/api/passengers/:passengerId", passengerController.show);
   app.delete("/api/passengers/:passengerId", passengerController.destroy);
   app.post("/api/packages", packageController.create);
+  app.get("/api/packages/categories", packageController.getCategories);
 };

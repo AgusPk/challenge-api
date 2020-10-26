@@ -20,12 +20,12 @@ module.exports = {
           as: "categoryId",
         },
       },
-      userId: {
+      passengerId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         onDelete: "CASCADE",
         references: {
-          model: "Passenger",
+          model: "Passengers",
           key: "id",
           as: "passengerId",
         },
