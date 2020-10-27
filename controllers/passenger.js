@@ -1,8 +1,8 @@
-const Passenger = require("../models/passenger")
+const { Passenger } = require("../models/index");
 module.exports = {
   async index(req, res) {
     try {
-      const passengers = await Passenger.findAll({ include: { all: true, nested: true }});
+      const passengers = await Passenger.findAll();
       res.status(200).send(passengers);
     } catch (e) {
       console.log(e);
@@ -23,7 +23,12 @@ module.exports = {
   },
   async show(req, res) {
     try {
-      const passenger = await Passenger.findByPk(req.params.passengerId);
+      const passenger = await Passenger.findOne({
+        where: {
+          id: req.params.passengerId,
+        },
+        include: { all: true, nested: true },
+      });
       if (passenger) {
         res.status(200).send(passenger);
       } else {

@@ -1,11 +1,17 @@
-const Package = require("../models/package");
-const PackageCategories = require("../models/packagecategories");
+const { Package } = require("../models/index");
+const { PackageCategories } = require("../models/index");
 module.exports = {
   async create(req, res) {
-    let reqPackages = req.body.packages;
+    let reqPackage = req.body.package;
+
     try {
-      const packages = await Package.bulkCreate(reqPackages);
-      res.status(201).send(packages);
+      let package = await Package.create({
+        name: reqPackage.name,
+        categoryId: reqPackage.categoryId,
+        passengerId: reqPackage.passengerId,
+      });
+      PackageCategory =  await package.getPackageCategory();
+      res.status(201).send({...package.dataValues, PackageCategory});
     } catch (e) {
       console.log(e);
       res.status(400).send(e);
