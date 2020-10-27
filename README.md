@@ -1,8 +1,8 @@
 # Installation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### git clone https://github.com/AgusPk/challenge-front.git
+
+### git clone https://github.com/AgusPk/challenge-api.git
 
 generar el container
 ### docker-compose build
